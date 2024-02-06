@@ -28,7 +28,7 @@ def show_report():
         # Column names
         column_names = [description[0] for description in cursor.description]
 
-        return render_template('report.html', column_names=column_names, result_set=result_set)
+        return render_template('reportcolor.html', column_names=column_names, result_set=result_set)
 
     except cx_Oracle.DatabaseError as e:
         return f"Database Error: {e}"
