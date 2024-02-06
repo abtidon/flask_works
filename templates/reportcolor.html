@@ -1,0 +1,56 @@
+<!-- templates/report.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle Database Report</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Define styles for PASS and FAILED rows */
+        .pass {
+            background-color: #8eff8e;  /* Green */
+        }
+
+        .failed {
+            background-color: #ff8e8e;  /* Red */
+        }
+    </style>
+</head>
+<body>
+    <h1>Oracle Database Report</h1>
+
+    {% if result_set %}
+        <table>
+            <tr>
+                {% for column in column_names %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in result_set %}
+                <tr class="{% if 'PASS' in row %}pass{% elif 'FAILED' in row %}failed{% endif %}">
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No data available.</p>
+    {% endif %}
+</body>
+</html>
