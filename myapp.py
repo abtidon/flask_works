@@ -19,7 +19,7 @@ def show_report():
         cursor = connection.cursor()
 
         # Execute a query to fetch data from the 'monlog' table
-        query = 'SELECT * FROM monlog'
+        query = 'SELECT * FROM monlog order by 1'
         cursor.execute(query)
 
         # Fetch all rows from the result set
